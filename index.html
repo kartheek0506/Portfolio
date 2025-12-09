@@ -11,22 +11,21 @@
   <style>
     /* ========================
        Professional Sky-Blue Theme
-       Replace the image file: profile_pic.jpg (same folder as this HTML)
+       Image used via Google Drive direct-view link
        ======================== */
     :root{
-      --bg: #f6fbff;             /* very light sky-blue background */
-      --card-bg: #ffffff;        /* white cards */
-      --muted: #47515a;         /* dark slate for body copy */
-      --accent: #1e88e5;        /* primary sky-blue */
-      --accent-2: #0288d1;      /* deeper sky-blue for gradients */
-      --soft: #e6f3ff;          /* very light blue surfaces */
+      --bg: #f6fbff;
+      --card-bg: #ffffff;
+      --muted: #47515a;
+      --accent: #1e88e5;
+      --accent-2: #0288d1;
+      --soft: #e6f3ff;
       --glass: rgba(120,170,220,0.06);
       --radius: 12px;
       --max-width: 1100px;
       --shadow: 0 8px 24px rgba(16,40,60,0.06);
     }
 
-    /* Reset & base */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -38,7 +37,7 @@
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       scroll-behavior:smooth;
-      padding-top:76px; /* room for sticky nav */
+      padding-top:76px;
     }
 
     .container{
@@ -154,9 +153,9 @@
     .project ul{margin:0 0 0 18px;color:var(--muted);font-size:14px}
     .project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 
-    /* Prompt library (kept simple & professional) */
+    /* Prompt library: SINGLE COLUMN (stacked) on ALL sizes */
     .prompts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
-    .prompt-card{background:var(--card-bg);border-radius:12px;padding:14px;border:1px solid var(--glass)}
+    .prompt-card{background:var(--card-bg);border-radius:12px;padding:14px;border:1px solid var(--glass);box-shadow:var(--shadow)}
     .terminal{background:var(--soft);border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#083049;border:1px solid rgba(2,136,209,0.04);min-height:84px}
     .copy-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
 
@@ -172,11 +171,10 @@
     /* Toast */
     #toast{position:fixed;right:18px;bottom:18px;background:var(--accent);color:white;padding:10px 14px;border-radius:8px;display:none;font-weight:700;z-index:2000}
 
-    /* Desktop layout */
+    /* Desktop layout (do not change prompts layout) */
     @media(min-width:880px){
       .two-col{grid-template-columns:1fr 360px}
       .projects-grid{grid-template-columns:repeat(2,1fr)}
-      .prompts{grid-template-columns:repeat(3,1fr)}
       .contact-grid{grid-template-columns:1fr 360px}
       .hero{align-items:center}
     }
@@ -227,9 +225,14 @@
         </div>
       </div>
 
-      <!-- Profile image: save your image as profile_pic.jpg in same folder -->
+      <!-- Profile image from Google Drive (direct-view) -->
       <div style="display:flex;align-items:center">
-        <img src="profile_pic.jpg" alt="Karthik Vadla — profile" class="profile-photo" />
+        <img
+          src="https://drive.google.com/uc?export=view&id=1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N"
+          alt="Karthik Vadla — profile"
+          class="profile-photo"
+          onerror="this.style.display='none'"
+        />
       </div>
     </section>
 
@@ -250,7 +253,7 @@
             <strong>Education</strong>
             <div style="margin-top:8px">
               <div><strong>Bachelor of Technology, Computer Science</strong> — Kasireddy Narayana Reddy College of Engineering & Research (Apr 2020 – Jun 2024). CGPA: 7.34</div>
-              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 9.07</div>
+              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 90.7</div>
             </div>
           </div>
         </div>
@@ -275,12 +278,12 @@
           <div class="skill-tag" role="listitem">Google Gemini</div>
           <div class="skill-tag" role="listitem">Claude</div>
           <div class="skill-tag" role="listitem">Gradio</div>
-          <div class="skill-tag" role="listitem">SHAP Explainability</div>
+         
         </div>
       </aside>
     </section>
 
-    <!-- PROJECTS (improved) -->
+    <!-- PROJECTS -->
     <section id="projects" class="card" aria-label="Projects">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <h3 style="margin:0">Projects</h3>
@@ -288,7 +291,6 @@
       </div>
 
       <div class="projects-grid">
-        <!-- Project 1 -->
         <article class="project" aria-labelledby="proj1">
           <h4 id="proj1">AI-Driven Story & Script Generation System — August 2024</h4>
           <div class="meta">Genre-aware story engine • Google Gemini integration • UI for writers</div>
@@ -300,7 +302,6 @@
           </ul>
         </article>
 
-        <!-- Project 2 -->
         <article class="project" aria-labelledby="proj2">
           <h4 id="proj2">Delinquency Risk Prediction & Collections Optimization — September 2025</h4>
           <div class="meta">Risk scoring • Feature engineering • SHAP explainability</div>
@@ -312,7 +313,6 @@
           </ul>
         </article>
 
-        <!-- Project 3 -->
         <article class="project" aria-labelledby="proj3">
           <h4 id="proj3">Tooling, Integrations & Prototypes</h4>
           <div class="meta">API integrations • REST contracts • Prototype demos</div>
@@ -323,7 +323,6 @@
           </ul>
         </article>
 
-        <!-- Project 4 -->
         <article class="project" aria-labelledby="proj4">
           <h4 id="proj4">ML & Explainability Work</h4>
           <div class="meta">Interpretability reports • dashboards • monitoring</div>
@@ -335,11 +334,11 @@
       </div>
     </section>
 
-    <!-- PROMPT LIBRARY -->
+    <!-- PROMPT LIBRARY (STACKED) -->
     <section id="prompts" class="card" aria-label="Prompt Library">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <h3 style="margin:0">Prompt Library</h3>
-        <div style="color:var(--muted);font-size:13px">Example prompts you can copy</div>
+        <div style="color:var(--muted);font-size:13px">Example prompts you can copy (stacked)</div>
       </div>
 
       <div class="prompts">
@@ -437,11 +436,9 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
           <div style="margin-top:12px;color:var(--muted)">
             <strong>Certifications</strong>
             <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:14px">
-              <li>Introduction to Generative AI  — Google</li>
-              <li>Introduction to Large Language Model — Google</li>
+              <li>Introduction to Generative AI Studio — Simplilearn</li>
               <li>Prompt Engineer for Everyone — Cognitive Class</li>
               <li>Gen AI Powered Data Analytics — Tata</li>
-              <li>Itroduction to Agents — Hugging Face</li>
             </ul>
           </div>
         </aside>
@@ -551,7 +548,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       setTimeout(()=>{ toast.style.opacity='0'; setTimeout(()=>toast.style.display='none',250); }, dur);
     }
 
-    // accessibility: respect reduced motion
+    // respect reduced motion
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     if(prefersReduced.matches){
       document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
