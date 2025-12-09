@@ -11,14 +11,12 @@
   <style>
     :root{
       --bg: #050306;
-      --card-bg: rgba(255,255,255,0.03);
+      --card-bg: rgba(255,255,255,0.02);
       --glass: rgba(255,255,255,0.02);
       --accent: #8fff6b; /* neon green */
       --accent-2: #9b59ff; /* neon purple */
       --muted: #9aa0a6;
-      --glow: 0 0 18px rgba(143,255,107,0.15);
-      --glass-border: rgba(255,255,255,0.04);
-      --radius: 14px;
+      --radius: 12px;
       --max-width: 1100px;
     }
 
@@ -27,17 +25,16 @@
     html,body{height:100%}
     body{
       margin:0;
-      background:linear-gradient(180deg,#050306 0%, #07050b 100%);
+      background:linear-gradient(180deg,var(--bg) 0%, #07050b 100%);
       color:#e6eef7;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
+      line-height:1.45;
       scroll-behavior:smooth;
       padding-top:72px; /* room for sticky nav */
     }
 
-    /* Container */
     .container{
       width:92%;
       max-width:var(--max-width);
@@ -45,20 +42,18 @@
       padding-bottom:80px;
     }
 
-    /* Sticky Navbar */
+    /* NAV */
     header.navbar{
       position:fixed;
-      top:0;
-      left:0;
-      right:0;
+      top:0; left:0; right:0;
       height:64px;
       display:flex;
       align-items:center;
       justify-content:center;
-      backdrop-filter: blur(6px);
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-bottom:1px solid var(--glass-border);
-      z-index:1000;
+      backdrop-filter: blur(8px);
+      background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      z-index:1200;
     }
     .nav-inner{
       width:92%;
@@ -67,298 +62,134 @@
       align-items:center;
       justify-content:space-between;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:700;
-      letter-spacing:0.6px;
-    }
-    .brand .dot{
-      width:12px;height:12px;border-radius:3px;
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand .logo{
+      width:14px;height:14px;border-radius:3px;
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 0 12px rgba(155,89,255,0.18),0 0 22px rgba(143,255,107,0.08);
+      box-shadow:0 0 12px rgba(143,255,107,0.12);
     }
     nav a{
       color:var(--muted);
       text-decoration:none;
-      margin-left:18px;
-      font-weight:600;
-      font-size:14px;
-      padding:8px 10px;
-      border-radius:8px;
-      transition:all .18s ease;
-    }
-    nav a:hover, nav a.active{
-      color:var(--accent);
-      box-shadow:0 0 20px rgba(143,255,107,0.06);
-      transform:translateY(-2px);
-    }
-
-    /* Hero */
-    .hero{
-      padding:40px 0 20px 0;
-      display:flex;
-      gap:20px;
-      align-items:center;
-      flex-direction:column;
-      text-align:center;
-    }
-    .hero-card{
-      width:100%;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid var(--glass-border);
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:var(--glow);
-    }
-    .name{
-      font-size:clamp(22px,6.2vw,44px);
-      font-weight:800;
-      letter-spacing:0.6px;
-      margin:0 0 8px 0;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .subtitle{
-      color:var(--muted);
-      font-weight:600;
-      min-height:28px;
-      font-size:14px;
-    }
-    .hero-meta{
-      margin-top:16px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      justify-content:center;
-      align-items:center;
-    }
-    .meta-pill{
-      padding:8px 12px;
-      border-radius:999px;
-      background:linear-gradient(90deg, rgba(143,255,107,0.06), rgba(155,89,255,0.03));
-      border:1px solid rgba(255,255,255,0.02);
-      font-weight:600;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    /* Two-column main sections */
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-      margin-top:22px;
-    }
-
-    /* About */
-    .card{
-      background:var(--card-bg);
-      border:1px solid var(--glass-border);
-      padding:20px;
-      border-radius:12px;
-    }
-    .section-title{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    .section-title h3{
-      margin:0;
-      font-size:16px;
-      letter-spacing:0.6px;
-    }
-    .muted{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    /* Skills tags */
-    .skills{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    .skill-tag{
-      padding:8px 10px;
-      border-radius:999px;
-      background:linear-gradient(90deg, rgba(155,89,255,0.06), rgba(143,255,107,0.03));
-      color:var(--accent);
+      margin-left:16px;
       font-weight:700;
-      font-size:13px;
-      border:1px solid rgba(255,255,255,0.03);
-      transition:transform .15s ease, box-shadow .15s ease;
+      font-size:14px;
+      padding:8px 10px;border-radius:10px;transition:all .16s ease;
     }
-    .skill-tag:hover{
-      transform:translateY(-4px);
-      box-shadow:0 6px 30px rgba(155,89,255,0.07);
-    }
+    nav a:hover, nav a.active{color:var(--accent); transform:translateY(-3px); box-shadow:0 0 20px rgba(143,255,107,0.06)}
 
-    /* Projects grid */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-    }
-    .project{
-      padding:14px;
-      border-radius:12px;
-      position:relative;
-      overflow:hidden;
+    /* Sections */
+    section{margin-top:28px}
+    .card{
       background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.03);
-      transition:transform .18s ease, box-shadow .18s ease;
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(0,0,0,0.5);
     }
-    .project:hover{
-      transform:translateY(-6px);
-      box-shadow:0 16px 60px rgba(0,0,0,0.45), 0 0 28px rgba(155,89,255,0.06);
-    }
-    .project h4{margin:0 0 8px 0}
-    .project p{margin:0;color:var(--muted);font-size:14px}
 
-    /* Prompt Library */
-    .prompts{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-    }
-    .prompt-card{
-      background:#060409;
-      border-radius:12px;
-      padding:14px;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow:0 8px 40px rgba(0,0,0,0.5);
-      position:relative;
-    }
-    .prompt-header{
+    /* HERO */
+    .hero{
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:8px;
-      margin-bottom:8px;
+      flex-direction:column;
+      gap:18px;
+      align-items:flex-start;
+      padding:28px 18px;
+      border-radius:var(--radius);
+      margin-top:6px;
+      background:
+        radial-gradient(600px 200px at 10% 10%, rgba(155,89,255,0.03), transparent 6%),
+        linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.02);
     }
-    .prompt-badge{
-      font-weight:700;
-      font-size:12px;
+    .hero-head{
+      display:flex;
+      width:100%;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .name{
+      font-size:clamp(20px,6.2vw,42px);
+      margin:0;
+      font-weight:900;
+      letter-spacing:0.6px;
       background:linear-gradient(90deg,var(--accent),var(--accent-2));
       -webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .terminal{
-      background:#020203;
-      border-radius:10px;
-      padding:12px;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
-      font-size:13px;
-      color:#bfeeb4;
-      border:1px solid rgba(255,255,255,0.02);
-      position:relative;
-      min-height:84px;
-    }
-    .copy-btn{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.04);
-      padding:8px 10px;
-      border-radius:8px;
-      cursor:pointer;
-      color:var(--muted);
-      font-weight:700;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      transition:all .14s ease;
-    }
-    .copy-btn:hover{
-      color:var(--accent);
-      box-shadow:0 0 20px rgba(143,255,107,0.06);
-      transform:translateY(-3px);
-    }
+    .subtitle{color:var(--muted);font-weight:700;font-size:14px;min-height:28px}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .meta-pill{padding:6px 10px;border-radius:999px;background:rgba(143,255,107,0.03);color:var(--muted);font-weight:700;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
 
-    /* Contact */
-    .contact-grid{
+    /* Contact quick */
+    .contact-quick{display:flex;flex-direction:column;gap:6px;text-align:left}
+    .contact-quick a{color:var(--accent);font-weight:700;text-decoration:none}
+
+    /* ABOUT and SKILLS layout */
+    .two-col{
       display:grid;
       grid-template-columns:1fr;
-      gap:12px;
+      gap:16px;
+      margin-top:12px;
     }
-    .contact-form{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+    .about-text{color:var(--muted);font-size:15px}
+    .education{margin-top:12px;color:var(--muted);font-size:14px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(155,89,255,0.04), rgba(143,255,107,0.03));color:var(--accent);font-weight:800;font-size:13px;border:1px solid rgba(255,255,255,0.02);transition:transform .15s}
+    .skill-tag:hover{transform:translateY(-4px);box-shadow:0 10px 40px rgba(155,89,255,0.04)}
+
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:12px}
+    .project{
+      padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);
+      transition:transform .16s ease, box-shadow .16s ease;
     }
-    .field{
-      padding:12px;
-      border-radius:10px;
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.03);
-      color:var(--muted);
-    }
-    .send-btn{
-      padding:12px 14px;
-      border-radius:10px;
-      border:none;
-      cursor:pointer;
-      font-weight:700;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#050306;
-      box-shadow:0 8px 24px rgba(155,89,255,0.08);
-      transition:transform .12s ease;
-    }
-    .send-btn:hover{transform:translateY(-4px)}
+    .project:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(0,0,0,0.6), 0 0 30px rgba(155,89,255,0.04)}
+    .project h4{margin:0 0 8px 0;font-size:16px}
+    .project .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
+    .project ul{margin:0 0 0 18px;color:var(--muted);font-size:14px}
+    .project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+
+    /* Prompt library */
+    .prompts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+    .prompt-card{background:#060409;border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
+    .terminal{background:#020203;border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#bfeeb4;border:1px solid rgba(255,255,255,0.02);min-height:84px}
+    .copy-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--muted);font-weight:700;display:inline-flex;gap:8px;align-items:center}
+    .copy-btn:hover{color:var(--accent);transform:translateY(-3px);box-shadow:0 0 20px rgba(143,255,107,0.05)}
+
+    /* Contact section */
+    .contact-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+    .contact-form{display:flex;flex-direction:column;gap:10px}
+    .field{padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+    .send-btn{padding:12px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#050306}
 
     /* Footer */
-    footer{
-      margin-top:28px;
-      padding:24px 0;
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-    }
+    footer{margin-top:28px;padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
 
     /* Toast */
-    #toast{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#050306;
-      padding:10px 14px;
-      border-radius:8px;
-      display:none;
-      font-weight:700;
-      box-shadow:0 10px 40px rgba(155,89,255,0.08);
-      z-index:2000;
-    }
+    #toast{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#050306;padding:10px 14px;border-radius:8px;display:none;font-weight:700;z-index:2000}
 
-    /* Responsive: tablet+ */
-    @media(min-width:780px){
-      .two-col{grid-template-columns:1fr 380px}
+    /* Desktop layout */
+    @media(min-width:880px){
+      .two-col{grid-template-columns:1fr 360px}
       .projects-grid{grid-template-columns:repeat(2,1fr)}
       .prompts{grid-template-columns:repeat(3,1fr)}
       .contact-grid{grid-template-columns:1fr 360px}
-      .hero{flex-direction:row;text-align:left}
-      .hero-card{display:flex;align-items:center;gap:22px}
-      .hero-meta{justify-content:flex-start}
+      .hero{flex-direction:row;align-items:center}
     }
-    @media(min-width:1100px){
-      .two-col{grid-template-columns:1fr 420px}
-      .projects-grid{grid-template-columns:repeat(2,1fr)}
-    }
-
   </style>
 </head>
 <body>
-
   <!-- NAV -->
   <header class="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="nav-inner">
+    <div class="nav-inner container">
       <div class="brand" aria-hidden="true">
-        <div class="dot" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:13px; color:var(--muted);font-weight:700">KARTHIK VADLA</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">Generative AI Engineer</div>
+        <div class="logo" aria-hidden="true"></div>
+        <div style="line-height:1">
+          <div style="font-size:13px;color:var(--muted);font-weight:800">KARTHIK VADLA</div>
+          <div style="font-size:11px;color:var(--muted)">Generative AI Engineer</div>
         </div>
       </div>
 
@@ -373,157 +204,182 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="page">
     <!-- HERO -->
-    <section id="home" class="hero" aria-label="Introduction">
-      <div class="hero-card card" role="region" aria-labelledby="heroHeading">
-        <div style="flex:1">
-          <h1 id="heroHeading" class="name">KARTHIK VADLA</h1>
-          <div class="subtitle" id="typing"></div>
-
+    <section id="home" class="hero card" aria-label="Introduction">
+      <div class="hero-head" style="width:100%">
+        <div>
+          <h1 class="name">KARTHIK VADLA</h1>
+          <div id="typing" class="subtitle" aria-live="polite"></div>
           <div class="hero-meta" aria-hidden="true">
-            <div class="meta-pill">Generative AI • Prompt Engineering</div>
-            <div class="meta-pill">LLMs • Vector Search • NLP</div>
-            <div class="meta-pill">Python • Hugging Face • LangChain</div>
+            <div class="meta-pill">Generative AI</div>
+            <div class="meta-pill">Prompt Engineering</div>
+            <div class="meta-pill">LLMs • Vector Search</div>
           </div>
         </div>
 
-        <div style="min-width:120px;text-align:right">
-          <div style="font-size:12px;color:var(--muted);font-weight:700">Hyderabad, India</div>
-          <div style="margin-top:8px;font-size:13px">
-            <div style="font-weight:700;color:var(--accent)">vadlakarthik9876@gmail.com</div>
-            <div style="color:var(--muted);margin-top:6px;">+91 8106910205</div>
-            <div style="margin-top:8px;">
-              <a href="https://linkedin.com/in/Karthik" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-weight:700">LinkedIn</a>
-              &nbsp;•&nbsp;
-              <a href="https://github.com/KARTHIK VADLA" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-weight:700">GitHub</a>
+        <div class="contact-quick" style="text-align:right;">
+          <div style="font-size:13px;color:var(--muted);font-weight:700">Hyderabad, India</div>
+          <a href="mailto:vadlakarthik9876@gmail.com" style="margin-top:6px;color:var(--accent);font-weight:800">vadlakarthik9876@gmail.com</a>
+          <div style="color:var(--muted);margin-top:6px">+91 8106910205</div>
+          <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end">
+            <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-0412b1258/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px" class="about-text">
+        Generative AI Engineer with hands-on experience building LLM-based applications, AI agents, text-generation systems, and ML pipelines.
+        Strong foundation in NLP, embeddings, tokenization, vector search, Python, and transformer models. Experienced working with OpenAI,
+        Google Gemini, and Claude APIs, and able to rapidly learn new AI tools, frameworks, and model architectures.
+      </div>
+    </section>
+
+    <!-- ABOUT + SKILLS -->
+    <section class="two-col" aria-label="About and Skills">
+      <div class="card" id="about">
+        <div class="section-title">
+          <h3 style="margin:0">About</h3>
+        </div>
+        <div class="about-text">
+          <p>
+            I build prototypes and production-ready flows for generative AI — from prompt engineering and embedding-based retrieval to
+            model orchestration and explainability. I design modular pipelines with story/memory systems, iterate on prompt stacks,
+            and implement UI prototypes (Gradio/REST) for demos and stakeholder trials.
+          </p>
+
+          <div class="education" aria-label="Education details">
+            <strong>Education</strong>
+            <div style="margin-top:8px">
+              <div><strong>Bachelor of Technology, Computer Science</strong> — Kasireddy Narayana Reddy College of Engineering & Research (Apr 2020 – Jun 2024). CGPA: 7.34</div>
+              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 90.7</div>
             </div>
           </div>
         </div>
       </div>
+
+      <aside class="card" id="skills" aria-labelledby="skillsHeading">
+        <h3 id="skillsHeading" style="margin:0 0 8px 0">Skills</h3>
+        <div class="skills" role="list">
+          <div class="skill-tag" role="listitem">Python</div>
+          <div class="skill-tag" role="listitem">LLMs</div>
+          <div class="skill-tag" role="listitem">Embeddings</div>
+          <div class="skill-tag" role="listitem">Tokenization</div>
+          <div class="skill-tag" role="listitem">Vector Search</div>
+          <div class="skill-tag" role="listitem">Prompt Engineering</div>
+          <div class="skill-tag" role="listitem">Hugging Face</div>
+          <div class="skill-tag" role="listitem">LangChain</div>
+          <div class="skill-tag" role="listitem">LlamaIndex</div>
+          <div class="skill-tag" role="listitem">Pandas</div>
+          <div class="skill-tag" role="listitem">NumPy</div>
+          <div class="skill-tag" role="listitem">Scikit-Learn</div>
+          <div class="skill-tag" role="listitem">OpenAI API</div>
+          <div class="skill-tag" role="listitem">Google Gemini</div>
+          <div class="skill-tag" role="listitem">Claude</div>
+          <div class="skill-tag" role="listitem">Gradio</div>
+          <div class="skill-tag" role="listitem">SHAP Explainability</div>
+        </div>
+      </aside>
     </section>
 
-    <!-- Main Grid -->
-    <section class="two-col" aria-label="Main content">
-      <!-- Left column -->
-      <div>
-        <!-- ABOUT -->
-        <div id="about" class="card" style="margin-top:6px">
-          <div class="section-title">
-            <h3>About</h3>
-          </div>
-          <p class="muted">
-            Generative AI Engineer with hands-on experience building LLM-based applications, AI agents, text-generation systems,
-            and ML pipelines. Strong foundation in NLP, embeddings, tokenization, vector search, Python, and transformer models.
-            Experienced working with OpenAI, Gemini, and Claude APIs, with the ability to rapidly learn new AI tools, frameworks,
-            and model architectures.
-          </p>
+    <!-- PROJECTS (improved, vertical-first) -->
+    <section id="projects" class="card" aria-label="Projects">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 style="margin:0">Projects</h3>
+        <div style="color:var(--muted);font-size:13px">Selected highlights from resume</div>
+      </div>
 
-          <div style="margin-top:12px" class="muted">
-            <strong>Education</strong>
-            <div style="margin-top:6px;">
-              Bachelor of Technology in Computer Science — Kasireddy Narayana Reddy College of Engineering & Research (Apr 2020 – Jun 2024). CGPA: 7.34
-            </div>
-            <div style="margin-top:6px;">
-              Board of Intermediate Education — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 90.7
-            </div>
-          </div>
-        </div>
-
-        <!-- SKILLS -->
-        <div id="skills" class="card" style="margin-top:12px">
-          <div class="section-title">
-            <h3>Skills</h3>
-          </div>
-
-          <div style="margin-top:6px" class="skills" aria-hidden="true">
-            <!-- Tags extracted from resume -->
-            <div class="skill-tag">Python</div>
-            <div class="skill-tag">LLMs</div>
-            <div class="skill-tag">Embeddings</div>
-            <div class="skill-tag">Tokenization</div>
-            <div class="skill-tag">Vector Search</div>
-            <div class="skill-tag">Prompt Engineering</div>
-            <div class="skill-tag">Text Generation</div>
-            <div class="skill-tag">Hugging Face</div>
-            <div class="skill-tag">LangChain</div>
-            <div class="skill-tag">LlamaIndex</div>
-            <div class="skill-tag">Pandas</div>
-            <div class="skill-tag">NumPy</div>
-            <div class="skill-tag">Scikit-Learn</div>
-            <div class="skill-tag">OpenAI API</div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project" aria-labelledby="proj1">
+          <h4 id="proj1">AI-Driven Story & Script Generation System — August 2024</h4>
+          <div class="meta">Genre-aware story engine • Google Gemini integration • UI for writers</div>
+          <ul>
+            <li>Designed an AI system capable of generating dynamic stories and scripts across genres (sci-fi, horror, fantasy) using advanced LLM prompting techniques.</li>
+            <li>Implemented scene-to-scene generation with character context, plot continuity, and user-driven branching choices to enable interactive storytelling.</li>
+            <li>Integrated Google Gemini API to produce creative content with adjustable style, tone, and narrative complexity.</li>
+            <li>Built a modular pipeline supporting story memory, plot tracking, and re-generation of specific scenes for refinement.</li>
+            <li>Created cinematic prompts (camera angles, transitions, visual mood) to support AI-based video generation workflows and improve downstream visual synthesis.</li>
+          </ul>
+          <div class="tags" aria-hidden="true">
             <div class="skill-tag">Google Gemini</div>
-            <div class="skill-tag">Claude</div>
+            <div class="skill-tag">Prompt Engineering</div>
+            <div class="skill-tag">Story Memory</div>
+            <div class="skill-tag">Gradio UI</div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project" aria-labelledby="proj2">
+          <h4 id="proj2">AI-Powered Delinquency Risk Prediction & Collections Optimization — September 2025</h4>
+          <div class="meta">Risk scoring • Feature engineering • SHAP explainability</div>
+          <ul>
+            <li>Conducted EDA on delinquency datasets to identify missing data, outliers, and key behavioural risk signals.</li>
+            <li>Built a full ML pipeline with imputation, encoding, and engineered payment-behaviour features to improve predictive performance.</li>
+            <li>Applied SHAP interpretability to explain top predictors (missed payments, recency flags, tenure, credit attributes) for stakeholder trust.</li>
+            <li>Designed an AI-driven collections workflow with real-time risk scoring, automated segmentation, and human-in-the-loop review for decision governance.</li>
+            <li>Integrated Responsible AI safeguards including fairness checks, demographic monitoring, and compliance-aligned decisioning; delivered a model estimating 15% delinquency reduction and 25% operational efficiency gain.</li>
+          </ul>
+          <div class="tags" aria-hidden="true">
+            <div class="skill-tag">SHAP</div>
+            <div class="skill-tag">Feature Engineering</div>
+            <div class="skill-tag">Modeling</div>
+            <div class="skill-tag">Responsible AI</div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project" aria-labelledby="proj3">
+          <h4 id="proj3">Tooling, Integrations & Prototypes</h4>
+          <div class="meta">API integrations • REST contracts • Prototype demos</div>
+          <ul>
+            <li>Implemented integrations with OpenAI, Google Gemini, and Claude APIs to compare model outputs and select best-fit providers per task.</li>
+            <li>Built REST-based pipelines and JSON-driven contracts for predictable model integration in downstream systems and microservices.</li>
+            <li>Created Gradio demos and small REST endpoints to quickly prototype features for stakeholder evaluation and usability testing.</li>
+          </ul>
+          <div class="tags" aria-hidden="true">
+            <div class="skill-tag">OpenAI</div>
+            <div class="skill-tag">REST APIs</div>
             <div class="skill-tag">Gradio</div>
-            <div class="skill-tag">Jupyter Notebook</div>
-            <div class="skill-tag">SHAP Explainability</div>
           </div>
-        </div>
+        </article>
 
-        <!-- PROJECTS -->
-        <div id="projects" class="card" style="margin-top:12px">
-          <div class="section-title">
-            <h3>Projects</h3>
+        <!-- Project 4 -->
+        <article class="project" aria-labelledby="proj4">
+          <h4 id="proj4">ML & Explainability Work</h4>
+          <div class="meta">Interpretability reports • dashboards • stakeholder-facing artifacts</div>
+          <ul>
+            <li>Applied feature engineering and SHAP to explain model drivers and surfaced key risk drivers to product and business teams.</li>
+            <li>Produced interpretability reports and risk-feature dashboards to help stakeholders make informed decisions and prioritize interventions.</li>
+            <li>Worked on model monitoring and fairness checks to ensure safe deployment in production-like workflows.</li>
+          </ul>
+          <div class="tags" aria-hidden="true">
+            <div class="skill-tag">Explainability</div>
+            <div class="skill-tag">Dashboards</div>
+            <div class="skill-tag">Monitoring</div>
           </div>
+        </article>
+      </div>
+    </section>
 
-          <div class="projects-grid" style="margin-top:8px">
-            <article class="project" aria-labelledby="proj1">
-              <h4 id="proj1">AI-Driven Story & Script Generation System — Aug 2024</h4>
-              <p>
-                Designed a system to generate dynamic stories and scripts across genres (sci-fi, horror, fantasy) using advanced LLM prompts.
-                Implemented scene-to-scene generation with character context, plot continuity, branching choices, and integrated Google Gemini API.
-                Built modular pipeline with story memory and scene regeneration; included cinematic prompts for video-generation workflows.
-              </p>
-            </article>
+    <!-- PROMPT LIBRARY -->
+    <section id="prompts" class="card" aria-label="Prompt Library">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 style="margin:0">Prompt Library</h3>
+        <div style="color:var(--muted);font-size:13px">Example prompts you can copy</div>
+      </div>
 
-            <article class="project" aria-labelledby="proj2">
-              <h4 id="proj2">AI-Powered Delinquency Risk Prediction & Collections Optimization — Sep 2025</h4>
-              <p>
-                Conducted EDA on delinquency datasets and created a full ML pipeline with imputation, feature engineering and SHAP interpretability.
-                Designed AI-driven collections workflow with real-time risk scoring, segmentation, human-in-the-loop review and Responsible AI safeguards.
-                Delivered model estimating 15% delinquency reduction and 25% operational efficiency improvements.
-              </p>
-            </article>
-
-            <!-- Additional small project cards for layout balance -->
-            <article class="project" aria-labelledby="proj3">
-              <h4 id="proj3">Tooling & Integrations</h4>
-              <p>
-                Implemented integrations with OpenAI, Gemini and Claude APIs, and built REST-based pipelines, JSON-driven contracts, and Gradio demos for prototypes.
-              </p>
-            </article>
-
-            <article class="project" aria-labelledby="proj4">
-              <h4 id="proj4">ML & Explainability</h4>
-              <p>
-                Applied feature engineering and SHAP to explain model drivers; developed interpretability reports and risk-feature dashboards for stakeholders.
-              </p>
-            </article>
+      <div class="prompts">
+        <div class="prompt-card" role="article" aria-labelledby="p1">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div>
+              <div style="font-weight:800;color:linear-gradient(90deg,var(--accent),var(--accent-2))">Code Refactoring</div>
+              <div id="p1" style="color:var(--muted);font-size:13px">Refactor a messy Python function into clean, tested code</div>
+            </div>
+            <button class="copy-btn" data-copy-target="prompt-1">Copy</button>
           </div>
-        </div>
-
-        <!-- PROMPT LIBRARY -->
-        <div id="prompts" class="card" style="margin-top:12px">
-          <div class="section-title">
-            <h3>Prompt Library</h3>
-            <div style="margin-left:auto;color:var(--muted);font-size:13px">Showcase — copy any prompt</div>
-          </div>
-
-          <div class="prompts" style="margin-top:8px">
-
-            <!-- Prompt 1: Code Refactoring -->
-            <div class="prompt-card" role="article" aria-labelledby="p1">
-              <div class="prompt-header">
-                <div>
-                  <div class="prompt-badge">Code Refactoring • Efficiency & Tests</div>
-                  <div style="color:var(--muted);font-size:12px;margin-top:6px" id="p1">Refactor a messy Python function into clean, tested code</div>
-                </div>
-                <button class="copy-btn" data-copy-target="prompt-1" title="Copy prompt">
-                  Copy
-                </button>
-              </div>
-
-              <pre id="prompt-1" class="terminal" aria-hidden="false">
+          <pre id="prompt-1" class="terminal" tabindex="0">
 You are an expert Python engineer. Given the following function and its purpose, refactor it for clarity, performance, and testability. Provide:
 1) Clean, idiomatic Python (typing + docstring).
 2) Unit tests using pytest for edge cases.
@@ -535,153 +391,132 @@ def calculate(data):
         if data[i] is None: continue
         s+=data[i]
     return s/len(data)
-              </pre>
+          </pre>
+        </div>
+
+        <div class="prompt-card" role="article" aria-labelledby="p2">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div>
+              <div style="font-weight:800;color:linear-gradient(90deg,var(--accent),var(--accent-2))">Creative Writing</div>
+              <div id="p2" style="color:var(--muted);font-size:13px">Generate a cinematic sci-fi scene with camera directions</div>
             </div>
-
-            <!-- Prompt 2: Creative Writing -->
-            <div class="prompt-card" role="article" aria-labelledby="p2">
-              <div class="prompt-header">
-                <div>
-                  <div class="prompt-badge">Creative Writing • Scene Generation</div>
-                  <div style="color:var(--muted);font-size:12px;margin-top:6px" id="p2">Generate a cinematic scene with camera directions</div>
-                </div>
-                <button class="copy-btn" data-copy-target="prompt-2" title="Copy prompt">
-                  Copy
-                </button>
-              </div>
-
-              <pre id="prompt-2" class="terminal">
+            <button class="copy-btn" data-copy-target="prompt-2">Copy</button>
+          </div>
+          <pre id="prompt-2" class="terminal" tabindex="0">
 You are a cinematic writer and director. Create a 300–450 word scene in a sci-fi setting focused on sensory detail and character action.
 Requirements:
-- Include 6 camera directions (e.g., close-up, dolly, cut-to) annotated inline.
-- Provide short director notes for mood, lighting, and sound cues.
-- Offer two alternatives for the scene's final line (optimistic / ambiguous).
-              </pre>
+- Include 6 camera directions annotated inline.
+- Provide director notes: mood, lighting, sound.
+- Offer two alternatives for the final line (optimistic / ambiguous).
+          </pre>
+        </div>
+
+        <div class="prompt-card" role="article" aria-labelledby="p3">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div>
+              <div style="font-weight:800;color:linear-gradient(90deg,var(--accent),var(--accent-2))">Data Analysis</div>
+              <div id="p3" style="color:var(--muted);font-size:13px">Explain drivers for a binary prediction model</div>
             </div>
-
-            <!-- Prompt 3: Data Analysis -->
-            <div class="prompt-card" role="article" aria-labelledby="p3">
-              <div class="prompt-header">
-                <div>
-                  <div class="prompt-badge">Data Analysis • Feature Importance</div>
-                  <div style="color:var(--muted);font-size:12px;margin-top:6px" id="p3">Explain drivers for a binary prediction model</div>
-                </div>
-                <button class="copy-btn" data-copy-target="prompt-3" title="Copy prompt">
-                  Copy
-                </button>
-              </div>
-
-              <pre id="prompt-3" class="terminal">
+            <button class="copy-btn" data-copy-target="prompt-3">Copy</button>
+          </div>
+          <pre id="prompt-3" class="terminal" tabindex="0">
 You are a data scientist. Given a trained binary classifier and a tabular dataset:
 1) Explain top 5 features driving prediction using SHAP-style language.
 2) Propose 3 actionable business interventions based on feature effects.
 3) Provide pseudo-code to compute cohort-level risk and visualize top features.
-              </pre>
-            </div>
-
-          </div>
+          </pre>
         </div>
+      </div>
+    </section>
 
+    <!-- CONTACT -->
+    <section id="contact" class="card" aria-label="Contact">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 style="margin:0">Contact</h3>
+        <div style="color:var(--muted);font-size:13px">Message or connect on socials</div>
       </div>
 
-      <!-- Right column -->
-      <aside style="position:sticky;top:86px;align-self:start">
-        <!-- Contact card -->
-        <div id="contact" class="card">
-          <div class="section-title">
-            <h3>Contact</h3>
-          </div>
+      <div class="contact-grid">
+        <div>
+          <form class="contact-form" onsubmit="event.preventDefault(); showToast('This form is visual-only — integrate a backend to enable sending.');">
+            <input class="field" placeholder="Your name" aria-label="Your name" />
+            <input class="field" placeholder="Your email" aria-label="Your email" />
+            <textarea class="field" rows="5" placeholder="Short message" aria-label="Short message"></textarea>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+              <button class="send-btn" type="submit">Send (visual)</button>
+              <div style="color:var(--muted);font-size:13px">Or connect directly:</div>
+            </div>
+          </form>
+        </div>
 
-          <div style="font-size:13px;color:var(--muted);">
-            <strong>Email:</strong> <span style="color:var(--accent);font-weight:700">vadlakarthik9876@gmail.com</span><br>
+        <aside style="min-width:200px">
+          <div style="margin-bottom:10px;color:var(--muted)">
+            <strong>Email:</strong> <a href="mailto:vadlakarthik9876@gmail.com" style="color:var(--accent)">vadlakarthik9876@gmail.com</a><br>
             <strong>Phone:</strong> <span style="color:var(--muted)">+91 8106910205</span><br>
             <strong>Location:</strong> Hyderabad, India
           </div>
 
-          <div style="margin-top:12px" class="muted">
-            <strong>Social</strong>
-            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-              <a href="https://linkedin.com/in/Karthik" target="_blank" rel="noopener" class="meta-pill" style="text-decoration:none">LinkedIn</a>
-              <a href="mailto:vadlakarthik9876@gmail.com" class="meta-pill" style="text-decoration:none">Email</a>
-              <a href="https://github.com/KARTHIK VADLA" target="_blank" rel="noopener" class="meta-pill" style="text-decoration:none">GitHub</a>
-            </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-0412b1258/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
+            <a class="meta-pill" href="mailto:vadlakarthik9876@gmail.com">Email</a>
           </div>
 
-          <div style="margin-top:14px">
-            <div class="section-title"><h4 style="margin:0;font-size:14px">Send a message (visual only)</h4></div>
-            <form class="contact-form" onsubmit="event.preventDefault(); showToast('This form is visual-only — integrate backend to enable sending.');">
-              <input class="field" placeholder="Your name" />
-              <input class="field" placeholder="Your email" />
-              <textarea class="field" rows="4" placeholder="Short message"></textarea>
-              <button class="send-btn" type="submit">Send</button>
-            </form>
+          <div style="margin-top:12px;color:var(--muted)">
+            <strong>Certifications</strong>
+            <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:14px">
+              <li>Introduction to Generative AI Studio — Simplilearn</li>
+              <li>Prompt Engineer for Everyone — Cognitive Class</li>
+              <li>Gen AI Powered Data Analytics — Tata</li>
+            </ul>
           </div>
-        </div>
-
-        <!-- Certifications / quick -->
-        <div class="card" style="margin-top:12px">
-          <div class="section-title">
-            <h4 style="margin:0">Certifications</h4>
-          </div>
-          <ul style="padding-left:18px;margin:8px 0;color:var(--muted);font-size:14px">
-            <li>Introduction to Generative AI Studio — Simplilearn</li>
-            <li>Prompt Engineer for Everyone — Cognitive Class</li>
-            <li>Gen AI Powered Data Analytics — Tata</li>
-          </ul>
-        </div>
-      </aside>
+        </aside>
+      </div>
     </section>
 
     <footer>
-      © <span id="year"></span> KARTHIK VADLA — Generative AI Engineer. Resume source: uploaded PDF.
+      © <span id="year"></span> KARTHIK VADLA — Generative AI Engineer
     </footer>
   </main>
 
   <div id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // Populate year
+    // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Typing effect
+    // typing effect (vertical friendly)
     (function(){
       const el = document.getElementById('typing');
       const items = [
-        "Prompt Engineer • Model Prototyper",
-        "AI/GenAI Enthusiast • LLM Applications",
+        "Prompt Engineer — Model Prototyper",
+        "AI/GenAI Enthusiast — LLM Applications",
         "Embeddings • Vector Search • Explainability"
       ];
       let idx = 0, pos = 0, forward = true;
-      const typingSpeed = 40, pause=1200;
-
+      const typingSpeed = 40, pause=1100;
       function step(){
         const current = items[idx];
         if(forward){
           pos++;
           el.textContent = current.slice(0,pos);
-          if(pos === current.length){
-            forward = false;
-            setTimeout(step, pause);
-            return;
-          }
+          if(pos === current.length){ forward=false; setTimeout(step, pause); return; }
         } else {
           pos--;
           el.textContent = current.slice(0,pos);
-          if(pos === 0){
-            forward = true;
-            idx = (idx+1)%items.length;
-          }
+          if(pos === 0){ forward=true; idx=(idx+1)%items.length; }
         }
         setTimeout(step, typingSpeed);
       }
       step();
     })();
 
-    // Smooth nav active state on scroll
+    // smooth nav + active state
     const links = Array.from(document.querySelectorAll('.nav-link'));
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
     function onScroll(){
-      const scrollPos = window.scrollY + 80;
+      const offset = 90;
+      const scrollPos = window.scrollY + offset;
       let current = links[0];
       for(let i=0;i<sections.length;i++){
         const s = sections[i];
@@ -694,19 +529,29 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
     window.addEventListener('scroll', onScroll);
     onScroll();
 
-    // Copy prompt buttons
+    // nav clicks with sticky offset
+    links.forEach(link=>{
+      link.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if(!target) return;
+        const top = target.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({top, behavior:'smooth'});
+      });
+    });
+
+    // copy prompt buttons
     const copyButtons = Array.from(document.querySelectorAll('.copy-btn'));
     copyButtons.forEach(btn=>{
-      btn.addEventListener('click', async ()=> {
+      btn.addEventListener('click', async ()=>{
         const id = btn.getAttribute('data-copy-target');
-        const contentEl = document.getElementById(id);
-        if(!contentEl) return;
-        const text = contentEl.innerText.trim();
-        try{
+        const el = document.getElementById(id);
+        if(!el) return;
+        const text = el.innerText.trim();
+        try {
           await navigator.clipboard.writeText(text);
           showToast('Prompt copied to clipboard');
-        }catch(e){
-          // fallback
+        } catch(e){
           const ta = document.createElement('textarea');
           ta.value = text;
           document.body.appendChild(ta);
@@ -718,46 +563,29 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       });
     });
 
-    // Toast display
-    function showToast(msg, duration=2200){
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.style.display='block';
-      t.style.opacity='1';
-      setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.style.display='none',300); }, duration);
+    // make terminal content selectable via double-click
+    document.querySelectorAll('.terminal').forEach(t=>{
+      t.addEventListener('dblclick', ()=>{ navigator.clipboard.writeText(t.innerText.trim()).then(()=>showToast('Prompt copied to clipboard')); });
+    });
+
+    // toast
+    function showToast(msg, dur=2000){
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      toast.style.opacity = '1';
+      setTimeout(()=>{ toast.style.opacity='0'; setTimeout(()=>toast.style.display='none',250); }, dur);
     }
 
-    // Keyboard accessibility: copy with Ctrl+Click on card area
-    document.querySelectorAll('.terminal').forEach(term=>{
-      term.addEventListener('dblclick', ()=>{
-        const text = term.innerText.trim();
-        navigator.clipboard.writeText(text).then(()=>showToast('Prompt copied to clipboard'));
-      });
-    });
+    // accessibility: focus outlines
+    document.addEventListener('keyup', e=>{ if(e.key === 'Tab') document.body.classList.add('user-is-tabbing'); });
 
-    // Small accessibility improvements: focus-visible outline for nav links
-    links.forEach(l=>{
-      l.addEventListener('focus', ()=> l.classList.add('active'));
-      l.addEventListener('blur', ()=> l.classList.remove('active'));
-    });
-
-    // Handle nav clicks for smooth offset (account for sticky header)
-    links.forEach(link=>{
-      link.addEventListener('click', (e)=>{
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
-        // adjust for sticky nav by scrolling a bit up
-        setTimeout(()=>window.scrollBy(0,-72), 300);
-      });
-    });
-
-    // Ensure high-contrast outlines for keyboard users
-    document.addEventListener('keyup', (e)=>{
-      if(e.key === 'Tab'){
-        document.body.style.outline = 'none';
-      }
-    });
-
+    // reduce motion respect
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(prefersReduced.matches){
+      // reduce animations if requested by OS
+      document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
+    }
   </script>
 </body>
 </html>
