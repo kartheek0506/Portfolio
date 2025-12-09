@@ -9,15 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* ========================
+       Professional Sky-Blue Theme
+       Replace the image file: profile_pic.jpg (same folder as this HTML)
+       ======================== */
     :root{
-      --bg: #050306;
-      --card-bg: rgba(255,255,255,0.02);
-      --glass: rgba(255,255,255,0.02);
-      --accent: #8fff6b; /* neon green */
-      --accent-2: #9b59ff; /* neon purple */
-      --muted: #9aa0a6;
+      --bg: #f6fbff;             /* very light sky-blue background */
+      --card-bg: #ffffff;        /* white cards */
+      --muted: #47515a;         /* dark slate for body copy */
+      --accent: #1e88e5;        /* primary sky-blue */
+      --accent-2: #0288d1;      /* deeper sky-blue for gradients */
+      --soft: #e6f3ff;          /* very light blue surfaces */
+      --glass: rgba(120,170,220,0.06);
       --radius: 12px;
       --max-width: 1100px;
+      --shadow: 0 8px 24px rgba(16,40,60,0.06);
     }
 
     /* Reset & base */
@@ -25,14 +31,14 @@
     html,body{height:100%}
     body{
       margin:0;
-      background:linear-gradient(180deg,var(--bg) 0%, #07050b 100%);
-      color:#e6eef7;
+      background:linear-gradient(180deg,var(--bg) 0%, #eef8ff 100%);
+      color:var(--muted);
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       scroll-behavior:smooth;
-      padding-top:72px; /* room for sticky nav */
+      padding-top:76px; /* room for sticky nav */
     }
 
     .container{
@@ -46,14 +52,15 @@
     header.navbar{
       position:fixed;
       top:0; left:0; right:0;
-      height:64px;
+      height:68px;
       display:flex;
       align-items:center;
       justify-content:center;
-      backdrop-filter: blur(8px);
-      background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      border-bottom:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+      background:rgba(255,255,255,0.75);
+      border-bottom:1px solid var(--glass);
       z-index:1200;
+      box-shadow: 0 2px 8px rgba(16,40,60,0.04);
     }
     .nav-inner{
       width:92%;
@@ -62,11 +69,11 @@
       align-items:center;
       justify-content:space-between;
     }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--muted)}
     .brand .logo{
-      width:14px;height:14px;border-radius:3px;
+      width:14px;height:14px;border-radius:4px;
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 0 12px rgba(143,255,107,0.12);
+      box-shadow:0 6px 18px rgba(2,136,209,0.08);
     }
     nav a{
       color:var(--muted);
@@ -74,102 +81,96 @@
       margin-left:16px;
       font-weight:700;
       font-size:14px;
-      padding:8px 10px;border-radius:10px;transition:all .16s ease;
+      padding:8px 10px;border-radius:10px;transition:all .14s ease;
     }
-    nav a:hover, nav a.active{color:var(--accent); transform:translateY(-3px); box-shadow:0 0 20px rgba(143,255,107,0.06)}
+    nav a:hover, nav a.active{
+      color:white;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      transform:translateY(-2px);
+      box-shadow:0 8px 28px rgba(2,136,209,0.08);
+    }
 
     /* Sections */
     section{margin-top:28px}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-      padding:20px;
+      background:var(--card-bg);
       border-radius:var(--radius);
-      box-shadow:0 8px 30px rgba(0,0,0,0.5);
+      padding:20px;
+      border:1px solid var(--glass);
+      box-shadow:var(--shadow);
     }
 
     /* HERO */
     .hero{
       display:flex;
-      flex-direction:column;
-      gap:18px;
-      align-items:flex-start;
-      padding:28px 18px;
-      border-radius:var(--radius);
-      margin-top:6px;
-      background:
-        radial-gradient(600px 200px at 10% 10%, rgba(155,89,255,0.03), transparent 6%),
-        linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.02);
-    }
-    .hero-head{
-      display:flex;
-      width:100%;
+      gap:20px;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+      padding:20px;
+      border-radius:var(--radius);
     }
+    .hero-left{flex:1;min-width:0}
     .name{
-      font-size:clamp(20px,6.2vw,42px);
+      font-size:clamp(22px,5.4vw,38px);
       margin:0;
-      font-weight:900;
-      letter-spacing:0.6px;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
+      font-weight:800;
+      color: #0f2b40;
     }
-    .subtitle{color:var(--muted);font-weight:700;font-size:14px;min-height:28px}
-    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-    .meta-pill{padding:6px 10px;border-radius:999px;background:rgba(143,255,107,0.03);color:var(--muted);font-weight:700;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
+    .subtitle{color:var(--muted);font-weight:600;font-size:15px;margin-top:6px}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .meta-pill{padding:7px 12px;border-radius:999px;background:var(--soft);color:var(--muted);font-weight:700;font-size:13px;border:1px solid rgba(30,136,229,0.08)}
 
-    /* Contact quick */
-    .contact-quick{display:flex;flex-direction:column;gap:6px;text-align:left}
-    .contact-quick a{color:var(--accent);font-weight:700;text-decoration:none}
+    /* Profile image */
+    .profile-photo{
+      width:128px;height:128px;border-radius:12px;
+      object-fit:cover;
+      border:3px solid var(--card-bg);
+      box-shadow:0 8px 30px rgba(2,136,209,0.08);
+      background:linear-gradient(180deg,#ffffff, #f2fbff);
+    }
 
     /* ABOUT and SKILLS layout */
     .two-col{
       display:grid;
       grid-template-columns:1fr;
       gap:16px;
-      margin-top:12px;
+      margin-top:16px;
     }
     .about-text{color:var(--muted);font-size:15px}
     .education{margin-top:12px;color:var(--muted);font-size:14px}
 
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(155,89,255,0.04), rgba(143,255,107,0.03));color:var(--accent);font-weight:800;font-size:13px;border:1px solid rgba(255,255,255,0.02);transition:transform .15s}
-    .skill-tag:hover{transform:translateY(-4px);box-shadow:0 10px 40px rgba(155,89,255,0.04)}
+    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;font-size:13px;border:1px solid rgba(2,136,209,0.06);transition:transform .12s}
+    .skill-tag:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(2,136,209,0.05)}
 
     /* Projects */
     .projects-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:12px}
     .project{
-      padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);
-      transition:transform .16s ease, box-shadow .16s ease;
+      padding:16px;border-radius:12px;background:linear-gradient(180deg,#ffffff, #fbfeff);border:1px solid rgba(2,136,209,0.04);
+      transition:transform .12s ease, box-shadow .12s ease;
     }
-    .project:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(0,0,0,0.6), 0 0 30px rgba(155,89,255,0.04)}
-    .project h4{margin:0 0 8px 0;font-size:16px}
+    .project:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(16,40,60,0.06)}
+    .project h4{margin:0 0 8px 0;font-size:16px;color:#0f2b40}
     .project .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
     .project ul{margin:0 0 0 18px;color:var(--muted);font-size:14px}
     .project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 
-    /* Prompt library */
+    /* Prompt library (kept simple & professional) */
     .prompts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
-    .prompt-card{background:#060409;border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
-    .terminal{background:#020203;border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#bfeeb4;border:1px solid rgba(255,255,255,0.02);min-height:84px}
-    .copy-btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--muted);font-weight:700;display:inline-flex;gap:8px;align-items:center}
-    .copy-btn:hover{color:var(--accent);transform:translateY(-3px);box-shadow:0 0 20px rgba(143,255,107,0.05)}
+    .prompt-card{background:var(--card-bg);border-radius:12px;padding:14px;border:1px solid var(--glass)}
+    .terminal{background:var(--soft);border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#083049;border:1px solid rgba(2,136,209,0.04);min-height:84px}
+    .copy-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
 
     /* Contact section */
     .contact-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
     .contact-form{display:flex;flex-direction:column;gap:10px}
-    .field{padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
-    .send-btn{padding:12px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#050306}
+    .field{padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(7,17,26,0.06);color:var(--muted)}
+    .send-btn{padding:12px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
 
     /* Footer */
     footer{margin-top:28px;padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
 
     /* Toast */
-    #toast{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#050306;padding:10px 14px;border-radius:8px;display:none;font-weight:700;z-index:2000}
+    #toast{position:fixed;right:18px;bottom:18px;background:var(--accent);color:white;padding:10px 14px;border-radius:8px;display:none;font-weight:700;z-index:2000}
 
     /* Desktop layout */
     @media(min-width:880px){
@@ -177,7 +178,7 @@
       .projects-grid{grid-template-columns:repeat(2,1fr)}
       .prompts{grid-template-columns:repeat(3,1fr)}
       .contact-grid{grid-template-columns:1fr 360px}
-      .hero{flex-direction:row;align-items:center}
+      .hero{align-items:center}
     }
   </style>
 </head>
@@ -207,32 +208,28 @@
   <main class="container" id="page">
     <!-- HERO -->
     <section id="home" class="hero card" aria-label="Introduction">
-      <div class="hero-head" style="width:100%">
-        <div>
-          <h1 class="name">KARTHIK VADLA</h1>
-          <div id="typing" class="subtitle" aria-live="polite"></div>
-          <div class="hero-meta" aria-hidden="true">
-            <div class="meta-pill">Generative AI</div>
-            <div class="meta-pill">Prompt Engineering</div>
-            <div class="meta-pill">LLMs • Vector Search</div>
-          </div>
+      <div class="hero-left">
+        <h1 class="name">KARTHIK VADLA</h1>
+        <div id="typing" class="subtitle" aria-live="polite"></div>
+        <div class="hero-meta" aria-hidden="true">
+          <div class="meta-pill">Generative AI</div>
+          <div class="meta-pill">Prompt Engineering</div>
+          <div class="meta-pill">LLMs • Vector Search</div>
         </div>
-
-        <div class="contact-quick" style="text-align:right;">
-          <div style="font-size:13px;color:var(--muted);font-weight:700">Hyderabad, India</div>
-          <a href="mailto:vadlakarthik9876@gmail.com" style="margin-top:6px;color:var(--accent);font-weight:800">vadlakarthik9876@gmail.com</a>
-          <div style="color:var(--muted);margin-top:6px">+91 8106910205</div>
-          <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end">
-            <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-0412b1258/" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
-          </div>
+        <div style="margin-top:12px;font-size:14px;color:var(--muted)">
+          <strong>Location:</strong> Hyderabad, India<br>
+          <strong>Email:</strong> <a href="mailto:vadlakarthik9876@gmail.com" style="color:var(--accent);text-decoration:none">vadlakarthik9876@gmail.com</a><br>
+          <strong>Phone:</strong> +91 8106910205
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-0412b1258/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
 
-      <div style="margin-top:12px" class="about-text">
-        Generative AI Engineer with hands-on experience building LLM-based applications, AI agents, text-generation systems, and ML pipelines.
-        Strong foundation in NLP, embeddings, tokenization, vector search, Python, and transformer models. Experienced working with OpenAI,
-        Google Gemini, and Claude APIs, and able to rapidly learn new AI tools, frameworks, and model architectures.
+      <!-- Profile image: save your image as profile_pic.jpg in same folder -->
+      <div style="display:flex;align-items:center">
+        <img src="profile_pic.jpg" alt="Karthik Vadla — profile" class="profile-photo" />
       </div>
     </section>
 
@@ -253,7 +250,7 @@
             <strong>Education</strong>
             <div style="margin-top:8px">
               <div><strong>Bachelor of Technology, Computer Science</strong> — Kasireddy Narayana Reddy College of Engineering & Research (Apr 2020 – Jun 2024). CGPA: 7.34</div>
-              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 90.7</div>
+              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 9.07</div>
             </div>
           </div>
         </div>
@@ -283,7 +280,7 @@
       </aside>
     </section>
 
-    <!-- PROJECTS (improved, vertical-first) -->
+    <!-- PROJECTS (improved) -->
     <section id="projects" class="card" aria-label="Projects">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <h3 style="margin:0">Projects</h3>
@@ -296,37 +293,23 @@
           <h4 id="proj1">AI-Driven Story & Script Generation System — August 2024</h4>
           <div class="meta">Genre-aware story engine • Google Gemini integration • UI for writers</div>
           <ul>
-            <li>Designed an AI system capable of generating dynamic stories and scripts across genres (sci-fi, horror, fantasy) using advanced LLM prompting techniques.</li>
-            <li>Implemented scene-to-scene generation with character context, plot continuity, and user-driven branching choices to enable interactive storytelling.</li>
-            <li>Integrated Google Gemini API to produce creative content with adjustable style, tone, and narrative complexity.</li>
-            <li>Built a modular pipeline supporting story memory, plot tracking, and re-generation of specific scenes for refinement.</li>
-            <li>Created cinematic prompts (camera angles, transitions, visual mood) to support AI-based video generation workflows and improve downstream visual synthesis.</li>
+            <li>Designed a system to generate dynamic stories and scripts across genres (sci-fi, horror, fantasy) using advanced LLM prompting techniques.</li>
+            <li>Implemented scene-to-scene generation, character context preservation, and branching choices to enable interactive storytelling.</li>
+            <li>Integrated Google Gemini API and built modular memory to allow iterative editing and scene regeneration.</li>
+            <li>Created cinematic prompts (camera angles, transitions, mood) to support downstream visual workflows.</li>
           </ul>
-          <div class="tags" aria-hidden="true">
-            <div class="skill-tag">Google Gemini</div>
-            <div class="skill-tag">Prompt Engineering</div>
-            <div class="skill-tag">Story Memory</div>
-            <div class="skill-tag">Gradio UI</div>
-          </div>
         </article>
 
         <!-- Project 2 -->
         <article class="project" aria-labelledby="proj2">
-          <h4 id="proj2">AI-Powered Delinquency Risk Prediction & Collections Optimization — September 2025</h4>
+          <h4 id="proj2">Delinquency Risk Prediction & Collections Optimization — September 2025</h4>
           <div class="meta">Risk scoring • Feature engineering • SHAP explainability</div>
           <ul>
-            <li>Conducted EDA on delinquency datasets to identify missing data, outliers, and key behavioural risk signals.</li>
-            <li>Built a full ML pipeline with imputation, encoding, and engineered payment-behaviour features to improve predictive performance.</li>
-            <li>Applied SHAP interpretability to explain top predictors (missed payments, recency flags, tenure, credit attributes) for stakeholder trust.</li>
-            <li>Designed an AI-driven collections workflow with real-time risk scoring, automated segmentation, and human-in-the-loop review for decision governance.</li>
-            <li>Integrated Responsible AI safeguards including fairness checks, demographic monitoring, and compliance-aligned decisioning; delivered a model estimating 15% delinquency reduction and 25% operational efficiency gain.</li>
+            <li>Performed exploratory data analysis and feature engineering on delinquency datasets to expose predictive signals.</li>
+            <li>Built an ML pipeline with imputation, encoding, and engineered behavioral features to improve model accuracy.</li>
+            <li>Applied SHAP for explainability and designed an AI-driven collections workflow with human-in-the-loop review.</li>
+            <li>Included fairness monitoring and safeguards; achieved estimated operational improvements and risk reductions.</li>
           </ul>
-          <div class="tags" aria-hidden="true">
-            <div class="skill-tag">SHAP</div>
-            <div class="skill-tag">Feature Engineering</div>
-            <div class="skill-tag">Modeling</div>
-            <div class="skill-tag">Responsible AI</div>
-          </div>
         </article>
 
         <!-- Project 3 -->
@@ -334,31 +317,20 @@
           <h4 id="proj3">Tooling, Integrations & Prototypes</h4>
           <div class="meta">API integrations • REST contracts • Prototype demos</div>
           <ul>
-            <li>Implemented integrations with OpenAI, Google Gemini, and Claude APIs to compare model outputs and select best-fit providers per task.</li>
-            <li>Built REST-based pipelines and JSON-driven contracts for predictable model integration in downstream systems and microservices.</li>
-            <li>Created Gradio demos and small REST endpoints to quickly prototype features for stakeholder evaluation and usability testing.</li>
+            <li>Integrated OpenAI, Google Gemini, and Claude to compare outputs and select the best provider per use-case.</li>
+            <li>Built REST pipelines and JSON contracts for predictable model integration with downstream services.</li>
+            <li>Delivered Gradio demos and small REST endpoints for rapid stakeholder testing and usability evaluation.</li>
           </ul>
-          <div class="tags" aria-hidden="true">
-            <div class="skill-tag">OpenAI</div>
-            <div class="skill-tag">REST APIs</div>
-            <div class="skill-tag">Gradio</div>
-          </div>
         </article>
 
         <!-- Project 4 -->
         <article class="project" aria-labelledby="proj4">
           <h4 id="proj4">ML & Explainability Work</h4>
-          <div class="meta">Interpretability reports • dashboards • stakeholder-facing artifacts</div>
+          <div class="meta">Interpretability reports • dashboards • monitoring</div>
           <ul>
-            <li>Applied feature engineering and SHAP to explain model drivers and surfaced key risk drivers to product and business teams.</li>
-            <li>Produced interpretability reports and risk-feature dashboards to help stakeholders make informed decisions and prioritize interventions.</li>
-            <li>Worked on model monitoring and fairness checks to ensure safe deployment in production-like workflows.</li>
+            <li>Applied SHAP and feature engineering to explain model drivers; produced stakeholder-ready interpretability reports.</li>
+            <li>Built risk-feature dashboards and monitoring checks to support safe deployment in production-like workflows.</li>
           </ul>
-          <div class="tags" aria-hidden="true">
-            <div class="skill-tag">Explainability</div>
-            <div class="skill-tag">Dashboards</div>
-            <div class="skill-tag">Monitoring</div>
-          </div>
         </article>
       </div>
     </section>
@@ -371,11 +343,11 @@
       </div>
 
       <div class="prompts">
-        <div class="prompt-card" role="article" aria-labelledby="p1">
+        <div class="prompt-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <div>
-              <div style="font-weight:800;color:linear-gradient(90deg,var(--accent),var(--accent-2))">Code Refactoring</div>
-              <div id="p1" style="color:var(--muted);font-size:13px">Refactor a messy Python function into clean, tested code</div>
+              <div style="font-weight:800;color:var(--accent)">Code Refactoring</div>
+              <div style="color:var(--muted);font-size:13px">Refactor a messy Python function into clean, tested code</div>
             </div>
             <button class="copy-btn" data-copy-target="prompt-1">Copy</button>
           </div>
@@ -394,11 +366,11 @@ def calculate(data):
           </pre>
         </div>
 
-        <div class="prompt-card" role="article" aria-labelledby="p2">
+        <div class="prompt-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <div>
-              <div style="font-weight:800;color:linear-gradient(90deg,var(--accent),var(--accent-2))">Creative Writing</div>
-              <div id="p2" style="color:var(--muted);font-size:13px">Generate a cinematic sci-fi scene with camera directions</div>
+              <div style="font-weight:800;color:var(--accent)">Creative Writing</div>
+              <div style="color:var(--muted);font-size:13px">Generate a cinematic sci-fi scene with camera directions</div>
             </div>
             <button class="copy-btn" data-copy-target="prompt-2">Copy</button>
           </div>
@@ -411,11 +383,11 @@ Requirements:
           </pre>
         </div>
 
-        <div class="prompt-card" role="article" aria-labelledby="p3">
+        <div class="prompt-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <div>
-              <div style="font-weight:800;color:linear-gradient(90deg,var(--accent),var(--accent-2))">Data Analysis</div>
-              <div id="p3" style="color:var(--muted);font-size:13px">Explain drivers for a binary prediction model</div>
+              <div style="font-weight:800;color:var(--accent)">Data Analysis</div>
+              <div style="color:var(--muted);font-size:13px">Explain drivers for a binary prediction model</div>
             </div>
             <button class="copy-btn" data-copy-target="prompt-3">Copy</button>
           </div>
@@ -451,12 +423,12 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
 
         <aside style="min-width:200px">
           <div style="margin-bottom:10px;color:var(--muted)">
-            <strong>Email:</strong> <a href="mailto:vadlakarthik9876@gmail.com" style="color:var(--accent)">vadlakarthik9876@gmail.com</a><br>
+            <strong>Email:</strong> <a href="mailto:vadlakarthik9876@gmail.com" style="color:var(--accent);text-decoration:none">vadlakarthik9876@gmail.com</a><br>
             <strong>Phone:</strong> <span style="color:var(--muted)">+91 8106910205</span><br>
             <strong>Location:</strong> Hyderabad, India
           </div>
 
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
             <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-0412b1258/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
             <a class="meta-pill" href="mailto:vadlakarthik9876@gmail.com">Email</a>
@@ -465,9 +437,11 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
           <div style="margin-top:12px;color:var(--muted)">
             <strong>Certifications</strong>
             <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:14px">
-              <li>Introduction to Generative AI Studio — Simplilearn</li>
+              <li>Introduction to Generative AI  — Google</li>
+              <li>Introduction to Large Language Model — Google</li>
               <li>Prompt Engineer for Everyone — Cognitive Class</li>
               <li>Gen AI Powered Data Analytics — Tata</li>
+              <li>Itroduction to Agents — Hugging Face</li>
             </ul>
           </div>
         </aside>
@@ -482,10 +456,10 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
   <div id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // year
+    // populate year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // typing effect (vertical friendly)
+    // typing effect
     (function(){
       const el = document.getElementById('typing');
       const items = [
@@ -494,7 +468,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         "Embeddings • Vector Search • Explainability"
       ];
       let idx = 0, pos = 0, forward = true;
-      const typingSpeed = 40, pause=1100;
+      const typingSpeed = 40, pause = 1100;
       function step(){
         const current = items[idx];
         if(forward){
@@ -563,7 +537,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       });
     });
 
-    // make terminal content selectable via double-click
+    // double-click to copy terminal content
     document.querySelectorAll('.terminal').forEach(t=>{
       t.addEventListener('dblclick', ()=>{ navigator.clipboard.writeText(t.innerText.trim()).then(()=>showToast('Prompt copied to clipboard')); });
     });
@@ -577,13 +551,9 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       setTimeout(()=>{ toast.style.opacity='0'; setTimeout(()=>toast.style.display='none',250); }, dur);
     }
 
-    // accessibility: focus outlines
-    document.addEventListener('keyup', e=>{ if(e.key === 'Tab') document.body.classList.add('user-is-tabbing'); });
-
-    // reduce motion respect
+    // accessibility: respect reduced motion
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     if(prefersReduced.matches){
-      // reduce animations if requested by OS
       document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
     }
   </script>
