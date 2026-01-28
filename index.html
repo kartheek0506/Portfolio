@@ -9,9 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ========================
-       Sky-Blue Professional Theme — clean, accessible, visible nav
-       ======================== */
     :root{
       --bg: #f6fbff;
       --card-bg: #ffffff;
@@ -37,9 +34,8 @@
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       scroll-behavior:smooth;
-      padding-top:var(--nav-height); /* reserve space for sticky nav */
+      padding-top:var(--nav-height);
     }
-
     .container{
       width:92%;
       max-width:var(--max-width);
@@ -47,7 +43,6 @@
       padding-bottom:100px;
     }
 
-    /* NAV (strong contrast, fixed) */
     header.navbar{
       position:fixed;
       top:0; left:0; right:0;
@@ -62,7 +57,6 @@
       box-shadow: 0 10px 30px rgba(16,40,60,0.08);
       transition:height .18s ease, background .18s ease;
     }
-
     .nav-inner{
       width:92%;
       max-width:var(--max-width);
@@ -71,7 +65,6 @@
       justify-content:space-between;
       gap:20px;
     }
-
     .brand{display:flex;align-items:center;gap:12px}
     .logo{
       width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
@@ -79,14 +72,10 @@
       display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;
       font-family:Inter,system-ui;
     }
-
-    
     .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
-
     nav{display:flex;align-items:center;gap:6px}
-    /* nav link contrast + spacing + indicator */
     nav a{
-      color:#083049; /* darker for readability */
+      color:#083049;
       text-decoration:none;
       margin-left:8px;
       font-weight:700;
@@ -97,8 +86,6 @@
       transition:transform .14s ease, color .14s ease, background .14s ease;
       display:inline-block;
     }
-
-    /* subtle underline indicator that grows on hover/active */
     nav a::after{
       content: "";
       position: absolute;
@@ -113,16 +100,13 @@
       opacity:0.95;
     }
     nav a:hover::after,
-    nav a.active::after{ width: 56%; } /* visible underline for hover/active */
-
+    nav a.active::after{ width: 56%; }
     nav a:hover, nav a.active{
       color:white;
       background: linear-gradient(90deg,var(--accent),var(--accent-2));
       transform: translateY(-3px);
       box-shadow: 0 12px 34px rgba(2,136,209,0.09);
     }
-
-    /* hero / cards */
     .card{
       background:linear-gradient(180deg,var(--card-bg), #fbfeff);
       border-radius:var(--radius);
@@ -131,12 +115,11 @@
       border:1px solid rgba(2,136,209,0.03);
       margin-top:18px;
     }
-
     .hero{display:flex;flex-direction:column;gap:18px;padding:22px}
     .hero-left{flex:1}
     .name{margin:0;font-size:28px;letter-spacing:0.6px;color:#0f2b40}
     .hero-meta{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-    .meta-pill{background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;padding:8px 10px;border-radius:999px;font-size:13px;border:1px solid rgba(2,136,209,0.04)}
+    .meta-pill{background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;padding:8px 10px;border-radius:999px;font-size:13px;border:1px solid r[...]
 
     .profile-wrap{display:flex;align-items:center;justify-content:center}
     .profile-photo{
@@ -145,7 +128,6 @@
       background:linear-gradient(180deg, var(--soft), #fff);
     }
 
-    /* ABOUT and SKILLS layout */
     .two-col{
       display:grid;
       grid-template-columns:1fr;
@@ -154,12 +136,10 @@
     }
     .about-text{color:var(--muted);font-size:15px}
     .education{margin-top:12px;color:var(--muted);font-size:14px}
-
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;font-size:13px;border:1px solid rgba(2,136,209,0.04)}
+    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;font-size:13px;border:1px solid r[...]
     .skill-tag:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(2,136,209,0.05)}
 
-    /* Projects */
     .projects-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:12px}
     .project{
       padding:16px;border-radius:12px;background:linear-gradient(180deg,#ffffff, #fbfeff);border:1px solid rgba(2,136,209,0.04);
@@ -170,34 +150,27 @@
     .project .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
     .project ul{margin:0 0 0 18px;color:var(--muted);font-size:14px}
     .project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-
-    /* Prompt library: stacked */
     .prompts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
     .prompt-card{background:var(--card-bg);border-radius:12px;padding:14px;border:1px solid var(--glass);box-shadow:var(--shadow)}
-    .terminal{background:var(--soft);border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#083049;border:1px solid rgba(2,136,209,0.04);overflow:auto;white-space:pre-wrap}
+    .terminal{background:var(--soft);border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#083049;border:1px solid rgba[...]
     .copy-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
 
-    /* Contact section */
     .contact-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
     .contact-form{display:flex;flex-direction:column;gap:10px}
     .field{padding:12px;border-radius:10px;background:transparent;border:1px solid rgba(7,17,26,0.06);color:var(--muted)}
     .send-btn{padding:12px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
 
-    /* Footer (increased size) */
     footer{
       margin-top:28px;
-      padding:36px 0;               /* larger footer padding */
+      padding:36px 0;
       text-align:center;
       color:var(--muted);
-      font-size:15px;              /* slightly larger text */
+      font-size:15px;
       background:linear-gradient(180deg, rgba(240,248,255,0.5), transparent);
       border-top:1px solid rgba(2,136,209,0.03);
     }
-
-    /* Toast */
     #toast{position:fixed;right:18px;bottom:18px;background:var(--accent);color:white;padding:10px 14px;border-radius:8px;display:none;font-weight:700;z-index:2000}
 
-    /* Desktop layout */
     @media(min-width:880px){
       .two-col{grid-template-columns:1fr 380px}
       .projects-grid{grid-template-columns:repeat(2,1fr)}
@@ -206,16 +179,12 @@
       .hero-left{flex:1}
       .profile-wrap{width:380px;display:flex;justify-content:flex-end}
     }
-
-    /* small screens adjust header offset */
     @media(max-width:420px){
       :root{--nav-height:88px}
       body{padding-top:88px}
       header.navbar{height:88px}
       nav{overflow:auto;padding-bottom:8px}
     }
-
-    /* respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
     }
@@ -230,11 +199,10 @@
           <div class="logo" aria-hidden="true">KV</div>
           <div style="line-height:1">
             <div class="title">KARTHIK VADLA</div>
-            <div class="subtitle">Generative AI Engineer</div>
+            <div class="subtitle">AI Engineer</div>
           </div>
         </div>
       </div>
-
       <nav aria-label="Primary">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About</a>
@@ -257,37 +225,32 @@
           <div class="meta-pill">Prompt Engineering</div>
           <div class="meta-pill">LLMs • Vector Search</div>
         </div>
-
         <div style="margin-top:14px;font-size:15px;color:var(--muted)">
           <strong>Location:</strong> Hyderabad, India<br>
           <strong>Email:</strong> <a href="mailto:vadlakarthik9876@gmail.com" style="color:var(--accent);text-decoration:none">vadlakarthik9876@gmail.com</a><br>
           <strong>Phone:</strong> +91 8106910205
         </div>
-
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-5b73773a5" target="_blank" rel="noopener">LinkedIn</a>
           <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
-
-      <!-- Profile image: use provided Google Drive image (direct view) with fallback -->
+      <!-- Profile image: repo image with fallback -->
       <div class="profile-wrap" aria-hidden="false">
         <picture>
-          <!-- direct-view link to Google Drive file (public) -->
-          <source srcset="https://drive.google.com/file/d/1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N/view?pli=1" type="image/jpeg">
+          <source srcset="profile%20pic.jpg" type="image/jpeg">
           <img
             id="profile-photo"
-            src="https://drive.google.com/file/d/1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N/view?pli=1"
+            src="profile%20pic.jpg"
             alt="Portrait of Karthik Vadla"
             class="profile-photo"
             width="180" height="180"
             loading="lazy"
-            onerror="(function(img){ img.onerror=null; img.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=800&auto=format&fit=crop&crop=faces&ixlib=rb-4.0.3&s=placeholder'; })(this);"
+            onerror="(function(img){ img.onerror=null; img.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=800&auto=format&fit=crop&crop=faces&ixlib=rb-4.0.3&s=placeholder'; })[...]
           />
         </picture>
       </div>
     </section>
-
     <!-- ABOUT + SKILLS -->
     <section class="two-col" aria-label="About and Skills">
       <div class="card" id="about">
@@ -300,17 +263,15 @@
             model orchestration and explainability. I design modular pipelines with story/memory systems, iterate on prompt stacks,
             and implement UI prototypes (Gradio/REST) for demos and stakeholder trials.
           </p>
-
           <div class="education" aria-label="Education details">
             <strong>Education</strong>
             <div style="margin-top:8px">
               <div><strong>Bachelor of Technology, Computer Science</strong> — Kasireddy Narayana Reddy College of Engineering & Research (Apr 2020 – Jun 2024). CGPA: 7.34</div>
-              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 90.7</div>
+              <div style="margin-top:6px"><strong>Board of Intermediate Education</strong> — Sree Thriveni Junior College (Jun 2018 – May 2020). CGPA: 9.0</div>
             </div>
           </div>
         </div>
       </div>
-
       <aside class="card" id="skills" aria-labelledby="skillsHeading">
         <h3 id="skillsHeading" style="margin:0 0 8px 0">Skills</h3>
         <div class="skills" role="list">
@@ -334,14 +295,12 @@
         </div>
       </aside>
     </section>
-
     <!-- PROJECTS -->
     <section id="projects" class="card" aria-label="Projects">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <h3 style="margin:0">Projects</h3>
         <div style="color:var(--muted);font-size:13px">Selected highlights from resume</div>
       </div>
-
       <div class="projects-grid">
         <article class="project" aria-labelledby="proj1">
           <h4 id="proj1">AI-Driven Story & Script Generation System — August 2024</h4>
@@ -353,7 +312,6 @@
             <li>Created cinematic prompts (camera angles, transitions, mood) to support downstream visual workflows.</li>
           </ul>
         </article>
-
         <article class="project" aria-labelledby="proj2">
           <h4 id="proj2">Delinquency Risk Prediction & Collections Optimization — September 2025</h4>
           <div class="meta">Risk scoring • Feature engineering • SHAP explainability</div>
@@ -364,7 +322,6 @@
             <li>Included fairness monitoring and safeguards; achieved estimated operational improvements and risk reductions.</li>
           </ul>
         </article>
-
         <article class="project" aria-labelledby="proj3">
           <h4 id="proj3">Tooling, Integrations & Prototypes</h4>
           <div class="meta">API integrations • REST contracts • Prototype demos</div>
@@ -374,7 +331,6 @@
             <li>Delivered Gradio demos and small REST endpoints for rapid stakeholder testing and usability evaluation.</li>
           </ul>
         </article>
-
         <article class="project" aria-labelledby="proj4">
           <h4 id="proj4">ML & Explainability Work</h4>
           <div class="meta">Interpretability reports • dashboards • monitoring</div>
@@ -385,14 +341,12 @@
         </article>
       </div>
     </section>
-
-    <!-- PROMPT LIBRARY (STACKED) -->
+    <!-- PROMPT LIBRARY-->
     <section id="prompts" class="card" aria-label="Prompt Library">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <h3 style="margin:0">Prompt Library</h3>
         <div style="color:var(--muted);font-size:13px">Example prompts you can copy (stacked)</div>
       </div>
-
       <div class="prompts">
         <div class="prompt-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
@@ -416,7 +370,6 @@ def calculate(data):
     return s/len(data)
           </pre>
         </div>
-
         <div class="prompt-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <div>
@@ -433,7 +386,6 @@ Requirements:
 - Offer two alternatives for the final line (optimistic / ambiguous).
           </pre>
         </div>
-
         <div class="prompt-card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <div>
@@ -451,14 +403,12 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         </div>
       </div>
     </section>
-
     <!-- CONTACT -->
     <section id="contact" class="card" aria-label="Contact">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <h3 style="margin:0">Contact</h3>
         <div style="color:var(--muted);font-size:13px">Message or connect on socials</div>
       </div>
-
       <div class="contact-grid">
         <div>
           <form class="contact-form" onsubmit="event.preventDefault(); showToast('This form is visual-only — integrate a backend to enable sending.');">
@@ -471,20 +421,17 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
             </div>
           </form>
         </div>
-
         <aside style="min-width:200px">
           <div style="margin-bottom:10px;color:var(--muted)">
             <strong>Email:</strong> <a href="mailto:vadlakarthik9876@gmail.com" style="color:var(--accent);text-decoration:none">vadlakarthik9876@gmail.com</a><br>
             <strong>Phone:</strong> <span style="color:var(--muted)">+91 8106910205</span><br>
             <strong>Location:</strong> Hyderabad, India
           </div>
-
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
             <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-5b73773a5" target="_blank" rel="noopener">LinkedIn</a>
             <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
             <a class="meta-pill" href="mailto:vadlakarthik9876@gmail.com">Email</a>
           </div>
-
           <div style="margin-top:12px;color:var(--muted)">
             <strong>Certifications</strong>
             <ul style="margin:8px 0 0 18px;color:var(--muted);font-size:14px">
@@ -496,24 +443,18 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         </aside>
       </div>
     </section>
-
     <footer class="card" style="text-align:center;">
       © <span id="year"></span> KARTHIK VADLA — AI Engineer
     </footer>
   </main>
-
   <div id="toast" role="status" aria-live="polite"></div>
-
   <script>
-    // populate year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // typing effect
     (function(){
       const el = document.getElementById('typing');
       const items = [
         "Prompt Engineer — Model Prototyper",
-        "AI/GenAI Enthusiast — LLM Applications",
+        "AI Engineer �� LLM Applications",
         "Embeddings • Vector Search • Explainability"
       ];
       let idx = 0, pos = 0, forward = true;
@@ -533,8 +474,6 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       }
       step();
     })();
-
-    // smooth nav + active state
     const links = Array.from(document.querySelectorAll('.nav-link'));
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
     function onScroll(){
@@ -551,8 +490,6 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
-
-    // nav clicks with sticky offset
     links.forEach(link=>{
       link.addEventListener('click', (e)=>{
         e.preventDefault();
@@ -562,8 +499,6 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         window.scrollTo({top, behavior:'smooth'});
       });
     });
-
-    // copy prompt buttons
     const copyButtons = Array.from(document.querySelectorAll('.copy-btn'));
     copyButtons.forEach(btn=>{
       btn.addEventListener('click', async ()=>{
@@ -585,13 +520,9 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         }
       });
     });
-
-    // double-click to copy terminal content
     document.querySelectorAll('.terminal').forEach(t=>{
       t.addEventListener('dblclick', ()=>{ navigator.clipboard.writeText(t.innerText.trim()).then(()=>showToast('Prompt copied to clipboard')); });
     });
-
-    // toast
     function showToast(msg, dur=2000){
       const toast = document.getElementById('toast');
       toast.textContent = msg;
@@ -599,14 +530,10 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       toast.style.opacity = '1';
       setTimeout(()=>{ toast.style.opacity='0'; setTimeout(()=>toast.style.display='none',250); }, dur);
     }
-
-    // respect reduced motion
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     if(prefersReduced.matches){
       document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
     }
-
-    // small accessibility: enable keyboard focus outline for nav links
     document.querySelectorAll('a,button').forEach(el=>{
       el.addEventListener('focus', ()=>el.classList.add('focus-visible'));
       el.addEventListener('blur', ()=>el.classList.remove('focus-visible'));
