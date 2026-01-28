@@ -10,7 +10,7 @@
 
   <style>
     /* ========================
-       Sky-Blue Professional Theme — header bigger, profile photo robust fallback, larger footer
+       Sky-Blue Professional Theme — clean, accessible, visible nav
        ======================== */
     :root{
       --bg: #f6fbff;
@@ -23,6 +23,7 @@
       --radius: 12px;
       --max-width: 1100px;
       --shadow: 0 8px 24px rgba(16,40,60,0.06);
+      --nav-height: 96px;
     }
 
     *{box-sizing:border-box}
@@ -36,7 +37,7 @@
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       scroll-behavior:smooth;
-      padding-top:96px; /* increased to match larger header */
+      padding-top:var(--nav-height); /* reserve space for sticky nav */
     }
 
     .container{
@@ -46,89 +47,103 @@
       padding-bottom:100px;
     }
 
-  <!-- Replace/merge the following CSS (inside <style>) and the profile image block (inside HERO section) -->
+    /* NAV (strong contrast, fixed) */
+    header.navbar{
+      position:fixed;
+      top:0; left:0; right:0;
+      height:var(--nav-height);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,252,255,0.95));
+      border-bottom:1px solid rgba(2,136,209,0.06);
+      z-index:1200;
+      box-shadow: 0 10px 30px rgba(16,40,60,0.08);
+      transition:height .18s ease, background .18s ease;
+    }
 
-/* NAV (updated for stronger visibility) */
-header.navbar{
-  position:fixed;
-  top:0; left:0; right:0;
-  height:96px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  backdrop-filter: blur(8px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,252,255,0.9));
-  border-bottom:1px solid rgba(2,136,209,0.06);
-  z-index:1200;
-  box-shadow: 0 10px 30px rgba(16,40,60,0.08);
-  transition:height .18s ease, background .18s ease;
-}
+    .nav-inner{
+      width:92%;
+      max-width:var(--max-width);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
 
-/* nav link contrast + spacing + indicator */
-nav a{
-  color:#083049; /* darker for readability */
-  text-decoration:none;
-  margin-left:18px;
-  font-weight:800;
-  font-size:15px;
-  padding:10px 14px;
-  border-radius:12px;
-  position:relative;
-  transition:transform .14s ease, color .14s ease;
-  display:inline-block;
-}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 6px 18px rgba(2,136,209,0.12);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;
+      font-family:Inter,system-ui;
+    }
 
-/* subtle underline indicator that grows on hover/active */
-nav a::after{
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -8px;
-  transform: translateX(-50%);
-  height:4px;
-  width:0;
-  border-radius:3px;
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  transition: width .18s cubic-bezier(.2,.8,.2,1);
-  opacity:0.95;
-}
-nav a:hover::after,
-nav a.active::after{ width: 60%; } /* visible underline for hover/active */
+    .title{font-weight:800;color:#083049;font-size:14px;letter-spacing:0.4px}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
 
-nav a:hover, nav a.active{
-  color:white;
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  transform: translateY(-3px);
-  box-shadow: 0 12px 34px rgba(2,136,209,0.09);
-}
+    nav{display:flex;align-items:center;gap:6px}
+    /* nav link contrast + spacing + indicator */
+    nav a{
+      color:#083049; /* darker for readability */
+      text-decoration:none;
+      margin-left:8px;
+      font-weight:700;
+      font-size:14px;
+      padding:8px 12px;
+      border-radius:10px;
+      position:relative;
+      transition:transform .14s ease, color .14s ease, background .14s ease;
+      display:inline-block;
+    }
 
-/* ensure anchor jumps don't hide under the header */
-section { scroll-margin-top: 112px; }
+    /* subtle underline indicator that grows on hover/active */
+    nav a::after{
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      height:3px;
+      width:0;
+      border-radius:3px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      transition: width .18s cubic-bezier(.2,.8,.2,1);
+      opacity:0.95;
+    }
+    nav a:hover::after,
+    nav a.active::after{ width: 56%; } /* visible underline for hover/active */
 
-<!-- HERO: profile image (drop-in replacement) -->
-<div style="display:flex;align-items:center">
-  <picture>
-    <!-- If you add WebP to assets, this will be preferred -->
-    <source srcset="assets/profile.webp" type="image/webp">
-    <source srcset="assets/profile.jpg" type="image/jpeg">
-    <!-- Fallback: relative path to repo asset. If you haven't added the file yet, add to assets/ and name profile.jpg -->
-    <img
-      id="profileImg"
-      src="assets/profile.jpg"
-      alt="Portrait of Karthik Vadla"
-      class="profile-photo"
-      width="180" height="180"
-      loading="lazy"
-      onerror="(function(img){ /* fallback to raw GitHub raw URL or an Unsplash placeholder */ img.onerror=null; img.src='https://drive.google.com/file/d/1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N/view?usp=sharing/assets/profile.jpg'; setTimeout(()=>{ if(img.complete && img.naturalWidth===0) img.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&crop=faces'; },250); })(this)"
-    />
-  </picture>
-</div>
+    nav a:hover, nav a.active{
+      color:white;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      transform: translateY(-3px);
+      box-shadow: 0 12px 34px rgba(2,136,209,0.09);
+    }
 
-/* small screens adjust header offset */
-@media(max-width:420px){
-  header.navbar{height:88px}
-  body{padding-top:88px}
-}
+    /* hero / cards */
+    .card{
+      background:linear-gradient(180deg,var(--card-bg), #fbfeff);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(2,136,209,0.03);
+      margin-top:18px;
+    }
+
+    .hero{display:flex;flex-direction:column;gap:18px;padding:22px}
+    .hero-left{flex:1}
+    .name{margin:0;font-size:28px;letter-spacing:0.6px;color:#0f2b40}
+    .hero-meta{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+    .meta-pill{background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;padding:8px 10px;border-radius:999px;font-size:13px;border:1px solid rgba(2,136,209,0.04)}
+
+    .profile-wrap{display:flex;align-items:center;justify-content:center}
+    .profile-photo{
+      width:180px;height:180px;border-radius:18px;object-fit:cover;border:6px solid rgba(255,255,255,0.6);
+      box-shadow:0 12px 30px rgba(2,136,209,0.08);
+      background:linear-gradient(180deg, var(--soft), #fff);
+    }
 
     /* ABOUT and SKILLS layout */
     .two-col{
@@ -141,7 +156,7 @@ section { scroll-margin-top: 112px; }
     .education{margin-top:12px;color:var(--muted);font-size:14px}
 
     .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;font-size:13px;border:1px solid rgba(2,136,209,0.06);transition:transform .12s}
+    .skill-tag{padding:8px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(30,136,229,0.06), rgba(2,136,209,0.03));color:var(--accent);font-weight:700;font-size:13px;border:1px solid rgba(2,136,209,0.04)}
     .skill-tag:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(2,136,209,0.05)}
 
     /* Projects */
@@ -159,7 +174,7 @@ section { scroll-margin-top: 112px; }
     /* Prompt library: stacked */
     .prompts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
     .prompt-card{background:var(--card-bg);border-radius:12px;padding:14px;border:1px solid var(--glass);box-shadow:var(--shadow)}
-    .terminal{background:var(--soft);border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#083049;border:1px solid rgba(2,136,209,0.04);min-height:84px}
+    .terminal{background:var(--soft);border-radius:8px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;color:#083049;border:1px solid rgba(2,136,209,0.04);overflow:auto;white-space:pre-wrap}
     .copy-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
 
     /* Contact section */
@@ -187,23 +202,32 @@ section { scroll-margin-top: 112px; }
       .two-col{grid-template-columns:1fr 380px}
       .projects-grid{grid-template-columns:repeat(2,1fr)}
       .contact-grid{grid-template-columns:1fr 360px}
-      .hero{align-items:center}
+      .hero{flex-direction:row;align-items:center}
+      .hero-left{flex:1}
+      .profile-wrap{width:380px;display:flex;justify-content:flex-end}
     }
 
-    /* small nicety: ensure large header on small view doesn't overlap content on jump */
+    /* small screens adjust header offset */
     @media(max-width:420px){
-      header.navbar{height:88px}
+      :root{--nav-height:88px}
       body{padding-top:88px}
+      header.navbar{height:88px}
+      nav{overflow:auto;padding-bottom:8px}
+    }
+
+    /* respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
     }
   </style>
 </head>
 <body>
   <!-- NAV -->
   <header class="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="nav-inner container">
+    <div class="nav-inner">
       <div style="display:flex;align-items:center;gap:12px">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
+        <div class="brand" aria-hidden="false">
+          <div class="logo" aria-hidden="true">KV</div>
           <div style="line-height:1">
             <div class="title">KARTHIK VADLA</div>
             <div class="subtitle">Generative AI Engineer</div>
@@ -240,21 +264,27 @@ section { scroll-margin-top: 112px; }
           <strong>Phone:</strong> +91 8106910205
         </div>
 
-        <div style="margin-top:14px;display:flex;gap:10px">
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="meta-pill" href="https://www.linkedin.com/in/vadla-karthik-5b73773a5" target="_blank" rel="noopener">LinkedIn</a>
           <a class="meta-pill" href="https://github.com/kartheek0506" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
 
-      <!-- Profile image: attempted local filename(s), then Google Drive fallback -->
-      <div style="display:flex;align-items:center">
-        <img
-          id="profileImg"
-          src="profile%20pic.jpg"
-          alt="Karthik Vadla — profile"
-          class="profile-photo"
-          onerror="(function(el){ /* try alternate local name */ if(el.src.indexOf('profile%20pic.jpg')>-1){ el.src='profile_pic.jpg'; return; } /* then fallback to Google Drive direct view */ if(el.src.indexOf('profile_pic.jpg')>-1 || el.src.indexOf('profile%20pic.jpg')>-1){ el.src='https://drive.google.com/uc?export=view&id=1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N'; return;} el.style.display='none'; })(this)"
-        />
+      <!-- Profile image: use provided Google Drive image (direct view) with fallback -->
+      <div class="profile-wrap" aria-hidden="false">
+        <picture>
+          <!-- direct-view link to Google Drive file (public) -->
+          <source srcset="https://drive.google.com/uc?export=view&id=1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N" type="image/jpeg">
+          <img
+            id="profile-photo"
+            src="https://drive.google.com/uc?export=view&id=1KUoBRqzgo9U-Sp_Co9QWV8Q3NHso8Y8N"
+            alt="Portrait of Karthik Vadla"
+            class="profile-photo"
+            width="180" height="180"
+            loading="lazy"
+            onerror="(function(img){ img.onerror=null; img.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=800&auto=format&fit=crop&crop=faces&ixlib=rb-4.0.3&s=placeholder'; })(this);"
+          />
+        </picture>
       </div>
     </section>
 
@@ -370,7 +400,7 @@ section { scroll-margin-top: 112px; }
               <div style="font-weight:800;color:var(--accent)">Code Refactoring</div>
               <div style="color:var(--muted);font-size:13px">Refactor a messy Python function into clean, tested code</div>
             </div>
-            <button class="copy-btn" data-copy-target="prompt-1">Copy</button>
+            <button class="copy-btn" data-copy-target="prompt-1" aria-label="Copy code refactoring prompt">Copy</button>
           </div>
           <pre id="prompt-1" class="terminal" tabindex="0">
 You are an expert Python engineer. Given the following function and its purpose, refactor it for clarity, performance, and testability. Provide:
@@ -393,7 +423,7 @@ def calculate(data):
               <div style="font-weight:800;color:var(--accent)">Creative Writing</div>
               <div style="color:var(--muted);font-size:13px">Generate a cinematic sci-fi scene with camera directions</div>
             </div>
-            <button class="copy-btn" data-copy-target="prompt-2">Copy</button>
+            <button class="copy-btn" data-copy-target="prompt-2" aria-label="Copy creative writing prompt">Copy</button>
           </div>
           <pre id="prompt-2" class="terminal" tabindex="0">
 You are a cinematic writer and director. Create a 300–450 word scene in a sci-fi setting focused on sensory detail and character action.
@@ -410,7 +440,7 @@ Requirements:
               <div style="font-weight:800;color:var(--accent)">Data Analysis</div>
               <div style="color:var(--muted);font-size:13px">Explain drivers for a binary prediction model</div>
             </div>
-            <button class="copy-btn" data-copy-target="prompt-3">Copy</button>
+            <button class="copy-btn" data-copy-target="prompt-3" aria-label="Copy data analysis prompt">Copy</button>
           </div>
           <pre id="prompt-3" class="terminal" tabindex="0">
 You are a data scientist. Given a trained binary classifier and a tabular dataset:
@@ -467,7 +497,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
       </div>
     </section>
 
-    <footer>
+    <footer class="card" style="text-align:center;">
       © <span id="year"></span> KARTHIK VADLA — Generative AI Engineer
     </footer>
   </main>
@@ -508,7 +538,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
     const links = Array.from(document.querySelectorAll('.nav-link'));
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
     function onScroll(){
-      const offset = 100;
+      const offset = 120;
       const scrollPos = window.scrollY + offset;
       let current = links[0];
       for(let i=0;i<sections.length;i++){
@@ -517,7 +547,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         if(s.offsetTop <= scrollPos) current = links[i];
       }
       links.forEach(l => l.classList.remove('active'));
-      current.classList.add('active');
+      if(current) current.classList.add('active');
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
@@ -528,7 +558,7 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));
         if(!target) return;
-        const top = target.getBoundingClientRect().top + window.scrollY - 88;
+        const top = target.getBoundingClientRect().top + window.scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) - 12 || 88);
         window.scrollTo({top, behavior:'smooth'});
       });
     });
@@ -575,6 +605,12 @@ You are a data scientist. Given a trained binary classifier and a tabular datase
     if(prefersReduced.matches){
       document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
     }
+
+    // small accessibility: enable keyboard focus outline for nav links
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('focus', ()=>el.classList.add('focus-visible'));
+      el.addEventListener('blur', ()=>el.classList.remove('focus-visible'));
+    });
   </script>
 </body>
 </html>
